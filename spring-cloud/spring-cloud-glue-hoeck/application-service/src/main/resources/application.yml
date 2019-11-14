@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: application-service
+
+server:
+  # port: ${PORT:0}
+  port: 18090
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:18100/eureka}
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+management:
+  server:
+    port: 28090
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+

@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: appl-edge-service
+
+server:
+  port: 18088
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:18100/eureka}
+  instance:
+    preferIpAddress: true
+
+management:
+  server:
+    port: 28088
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+zuul:
+  prefix: /soap
+  ignoredServices: '*'
+  routes:
+    greetings:
+      path: /soap/greeting
+      serviceId: soap-service

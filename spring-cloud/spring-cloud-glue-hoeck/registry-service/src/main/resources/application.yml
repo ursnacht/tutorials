@@ -1,0 +1,32 @@
+server:
+  port: 18100
+
+spring:
+  application:
+    name: registry-service
+#  boot:
+#    admin:
+#       client:
+#         url: http://localhost:8200
+#         username: admin
+#         password: admin
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:18100/eureka}
+  server:
+    peer-node-read-timeout-ms: 10000
+
+management:
+  server:
+    port: 28100
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
