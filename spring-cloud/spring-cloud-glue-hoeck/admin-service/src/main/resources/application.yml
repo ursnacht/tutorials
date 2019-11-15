@@ -49,7 +49,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*""
+        include: "*"
   endpoint:
     health:
       show-details: always
@@ -58,5 +58,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:18100/eureka}
+    healthcheck:
+      enabled: true
   instance:
     preferIpAddress: true

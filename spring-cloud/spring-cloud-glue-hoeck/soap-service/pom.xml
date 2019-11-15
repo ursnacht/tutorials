@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>spring-cloud-glue-hoeck</groupId>
-	<artifactId>admin-service</artifactId>
+    <groupId>spring-cloud-glue-hoeck</groupId>
+	<artifactId>soap-service</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<packaging>jar</packaging>
@@ -18,14 +18,21 @@
 	</parent>
 
 	<dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-server</artifactId>
-			<version>${spring-boot-admin-server.version}</version>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -46,10 +53,45 @@
 	</dependencyManagement>
 
 	<!-- properties>
+		<spring-boot.version>2.1.9.RELEASE</spring-boot.version>
 		<spring-boot-admin-server.version>2.1.6</spring-boot-admin-server.version>
 		<spring-boot-admin-starter-client.version>2.1.6</spring-boot-admin-starter-client.version>
 		<spring-boot-admin-server-ui-login.version>1.5.7</spring-boot-admin-server-ui-login.version>
 		<spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
 	</properties -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
+					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<clearOutputDir>false</clearOutputDir>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

@@ -1,22 +1,22 @@
-server:
-  port: 18100
-
 spring:
   application:
-    name: registry-service
+    name: soap-service
+
+server:
+  # port: ${PORT:0}
+  port: 18099
 
 eureka:
   client:
-    registerWithEureka: false
-    fetchRegistry: false
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:18100/eureka}
-  server:
-    peer-node-read-timeout-ms: 10000
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 management:
   server:
-    port: 28100
+    port: 28099
   endpoints:
     web:
       exposure:
@@ -24,3 +24,4 @@ management:
   endpoint:
     health:
       show-details: always
+

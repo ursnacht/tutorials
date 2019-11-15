@@ -24,9 +24,10 @@ management:
       show-details: always
 
 zuul:
-  prefix: /soap
   ignoredServices: '*'
   routes:
-    greetings:
-      path: /soap/greeting
+    countries:
+      path: /soap/*
       serviceId: soap-service
+      stripPrefix: false
+      
