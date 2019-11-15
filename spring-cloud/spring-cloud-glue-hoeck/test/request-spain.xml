@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spr="http://www.glue.ch/cloud/springsoap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spr:getCountryRequest>
+         <spr:name>Spain</spr:name>
+      </spr:getCountryRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

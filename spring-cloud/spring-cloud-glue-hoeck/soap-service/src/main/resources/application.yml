@@ -4,19 +4,19 @@ spring:
 
 server:
   # port: ${PORT:0}
-  port: 18099
+  port: 18210
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:18100/eureka}
+      defaultZone: ${EUREKA_URI:http://localhost:18300/eureka}
   instance:
     preferIpAddress: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 management:
   server:
-    port: 28099
+    port: 28210
   endpoints:
     web:
       exposure:

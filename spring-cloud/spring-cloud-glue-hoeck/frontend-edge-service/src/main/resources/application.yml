@@ -3,18 +3,18 @@ spring:
     name: frontend-edge-service
 
 server:
-  port: 18080
+  port: 18100
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:18100/eureka}
+      defaultZone: ${EUREKA_URI:http://localhost:18300/eureka}
   instance:
     preferIpAddress: true
 
 management:
   server:
-    port: 28080
+    port: 28100
   endpoints:
     web:
       exposure:

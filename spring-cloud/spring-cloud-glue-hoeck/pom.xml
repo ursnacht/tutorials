@@ -6,7 +6,7 @@
 
     <groupId>spring-cloud-glue-hoeck</groupId>
     <artifactId>spring-cloud-glue-hoeck-parent</artifactId>
-    <!-- version>1.0.0-SNAPSHOT</version -->
+    <version>1.0.0-SNAPSHOT</version>
     <name>spring-cloud-glue-hoeck</name>
     <description>Spring Cloud Netflix Portfolio</description>
     <packaging>pom</packaging>
@@ -36,10 +36,6 @@
         </dependency>
     </dependencies>
 
-    <!--  properties>
-        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
-        <spring-cloud-dependencies.version>Greenwich.RELEASE</spring-cloud-dependencies.version>
-    </properties -->
 	<properties>
 		<spring-boot.version>2.1.9.RELEASE</spring-boot.version>
         <spring-cloud-dependencies.version>Greenwich.RELEASE</spring-cloud-dependencies.version>
@@ -47,9 +43,7 @@
 		<spring-boot-admin-starter-client.version>2.1.6</spring-boot-admin-starter-client.version>
 		<spring-boot-admin-server-ui-login.version>1.5.7</spring-boot-admin-server-ui-login.version>
 		<spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
-		<!-- spring-cloud-starter-netflix-eureka-client.version></spring-cloud-starter-netflix-eureka-client.version -->
 	</properties>
-
 
 	<build>
 		<plugins>

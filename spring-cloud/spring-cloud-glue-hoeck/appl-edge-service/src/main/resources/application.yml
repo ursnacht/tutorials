@@ -3,18 +3,18 @@ spring:
     name: appl-edge-service
 
 server:
-  port: 18088
+  port: 18200
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:18100/eureka}
+      defaultZone: ${EUREKA_URI:http://localhost:18300/eureka}
   instance:
     preferIpAddress: true
 
 management:
   server:
-    port: 28088
+    port: 28200
   endpoints:
     web:
       exposure:

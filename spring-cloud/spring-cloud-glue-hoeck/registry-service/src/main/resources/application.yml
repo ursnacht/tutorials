@@ -1,5 +1,5 @@
 server:
-  port: 18100
+  port: 18300
 
 spring:
   application:
@@ -10,13 +10,13 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:18100/eureka}
+      defaultZone: ${EUREKA_URI:http://localhost:18300/eureka}
   server:
     peer-node-read-timeout-ms: 10000
 
 management:
   server:
-    port: 28100
+    port: 28300
   endpoints:
     web:
       exposure:
