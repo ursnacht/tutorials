@@ -27,15 +27,6 @@
         <module>soap-service</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
 	<properties>
 		<spring-boot.version>2.1.9.RELEASE</spring-boot.version>
         <spring-cloud-dependencies.version>Greenwich.RELEASE</spring-cloud-dependencies.version>
@@ -54,6 +45,7 @@
 					<execution>
 						<goals>
 							<goal>repackage</goal>
+                            <goal>build-info</goal>
 						</goals>
 					</execution>
 				</executions>

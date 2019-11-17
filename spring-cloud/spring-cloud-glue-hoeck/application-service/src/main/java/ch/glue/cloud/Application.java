@@ -26,7 +26,7 @@ public class Application {
 
     @RequestMapping("/greeting")
     public String greeting() {
-        System.out.println("/greeting was called");
+        System.out.println("greeting was called");
         return String.format("Hello from '%s' with instance %s!", appName, instance);
     }
 }

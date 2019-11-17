@@ -32,3 +32,9 @@ Im Parentverzeichnis oder in den einzelnen Moduln:
 Im Modul:
 
     java -jar target/...-service-1.0.0-SNAPSHOT.jar
+    
+## SOAP-Test
+
+Slash am Ende ist wichtig!
+
+    curl --header "content-type: text/xml" -d @test/request-spain.xml http://localhost:18200/soap/
