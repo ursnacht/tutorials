@@ -3,7 +3,7 @@ spring:
     name: application-service
 
 server:
-  # port: ${PORT:0}
+  #port: ${random.int(18110,18119)}
   port: 18110
 
 eureka:
@@ -16,6 +16,7 @@ eureka:
 
 management:
   server:
+    # port: ${random.int(28110,28119)}
     port: 28110
   endpoints:
     web:
