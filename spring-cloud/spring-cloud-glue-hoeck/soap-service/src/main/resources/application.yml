@@ -3,8 +3,8 @@ spring:
     name: soap-service
 
 server:
-  port: ${PORT:0}
-  # port: 18210
+  #port: ${PORT:0}
+  port: 18210
 
 eureka:
   client:
@@ -16,8 +16,8 @@ eureka:
 
 management:
   server:
-    port: ${PORT:0}
-    # port: 28210
+    #port: ${PORT:0}
+    port: 28210
   endpoints:
     web:
       exposure:
