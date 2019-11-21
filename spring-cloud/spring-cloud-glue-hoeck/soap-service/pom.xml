@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-    <groupId>spring-cloud-glue-hoeck</groupId>
+	<groupId>spring-cloud-glue-hoeck</groupId>
 	<artifactId>soap-service</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
@@ -18,11 +18,11 @@
 	</parent>
 
 	<dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 			<version>${spring-cloud-starter-netflix-eureka-client.version}</version>
-        </dependency>
+		</dependency>
 		<dependency>
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
@@ -69,71 +69,58 @@
 			<version>2.9.8</version>
 		</dependency>
 
-
-		<!-- dependency>
-			<groupId>com.sun.activation</groupId>
-			<artifactId>javax.activation</artifactId>
-			<version>${javax.activation.version}</version>
-		</dependency>
-
+		<!-- jaxb stuff -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
 			<version>${jaxb.api.version}</version>
 		</dependency>
-
 		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-core</artifactId>
-			<version>${jaxb.api.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>${jaxb.api.version}</version>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>${jaxb-runtime.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-			<scope>provided</scope>
-		</dependency -->
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>${javax.activation.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<properties>
-		<javax.activation.version>1.2.0</javax.activation.version>
-		<jaxb.api.version>2.3.0</jaxb.api.version>
-		<lombok.version>1.18.6</lombok.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+
+		<javax.activation.version>1.1.1</javax.activation.version>
+		<jaxb.api.version>2.3.1</jaxb.api.version>
+		<jaxb-runtime.version>2.3.2</jaxb-runtime.version>
 	</properties>
 
 	<build>
 		<plugins>
-			<!-- plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<release>11</release>
-				</configuration>
-			</plugin -->
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>1.6</version>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-xjc-plugin</artifactId>
+				<version>3.3.0</version>
 				<executions>
 					<execution>
 						<id>xjc</id>
+						<phase>generate-sources</phase>
 						<goals>
-							<goal>xjc</goal>
+							<goal>xsdtojava</goal>
 						</goals>
+						<configuration>
+							<xsdOptions>
+								<xsdOption>
+									<xsd>${basedir}/src/main/resources/service.xsd</xsd>
+									<packagename>ch.glue.cloud.springsoap</packagename>
+								</xsdOption>
+							</xsdOptions>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
-					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-					<clearOutputDir>false</clearOutputDir>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
